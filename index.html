@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Guau Puzles · Privacidad / Privacy</title>
+<style>
+:root { color-scheme: light dark; --bg:#f6f1e7; --card:#fff; --ink:#2b2118; --soft:#6b5a49; --link:#2563a8; --edge:#e3d6c0; }
+@media (prefers-color-scheme: dark) { :root { --bg:#1d1913; --card:#2a241b; --ink:#f3ebdd; --soft:#b9a98f; --link:#8dbcf0; --edge:#43392b; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 42rem; margin: 0 auto; padding: 20px 16px 48px; }
+.card { background:var(--card); border:2px solid var(--edge); border-radius:20px; padding: 18px 18px 8px; }
+h1 { font-size: 1.55rem; line-height: 1.2; margin: 0 0 4px; }
+h2 { font-size: 1.1rem; margin: 1.4em 0 .2em; }
+p { margin: .3em 0 .8em; }
+.upd { color: var(--soft); font-size: .9rem; }
+a { color: var(--link); }
+nav { font-size: .95rem; margin: 0 0 14px; line-height: 2; }
+nav a { display:inline-block; padding: 0 2px; }
+nav a[aria-current="true"] { font-weight: 800; text-decoration: none; color: var(--ink); }
+.go a { display:inline-block; margin-top: .6em; padding: 10px 18px; border-radius: 14px; background: var(--link); color:#fff; text-decoration:none; font-weight: 700; }
+html.js .lang { display: none; }
+html.js .lang.on { display: block; }
+.lang + .lang { margin-top: 2.5rem; border-top: 2px solid var(--edge); padding-top: 1.5rem; }
+html.js .lang + .lang { margin-top: 0; border: 0; padding: 0; }
+</style>
+<script>
+(function () {
+  var all = ['es', 'en', 'fr', 'de', 'it', 'pt-BR', 'nl', 'pl', 'sv', 'da', 'nb', 'fi'];
+  var d = document.documentElement;
+  d.className += ' js';
+  function pick() {
+    var q = (location.search.match(/[?&]lang=([\w-]+)/) || [])[1];
+    var want = q ? [q] : (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'es']);
+    for (var i = 0; i < want.length; i++) {
+      var l = String(want[i]).toLowerCase();
+      for (var j = 0; j < all.length; j++) if (all[j].toLowerCase() === l) return all[j];
+      for (var k = 0; k < all.length; k++) if (all[k].toLowerCase().split('-')[0] === l.split('-')[0]) return all[k];
+    }
+    return 'es';
+  }
+  function show(code) {
+    var secs = document.querySelectorAll('section.lang');
+    for (var i = 0; i < secs.length; i++) secs[i].className = secs[i].id === code ? 'lang on' : 'lang';
+    var links = document.querySelectorAll('nav a');
+    for (var j = 0; j < links.length; j++) { if (links[j].getAttribute('data-l') === code) links[j].setAttribute('aria-current', 'true'); else links[j].removeAttribute('aria-current'); }
+    d.lang = code;
+    var t = document.querySelector('#' + code + ' h1');
+    if (t) document.title = t.textContent;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    show(pick());
+    var links = document.querySelectorAll('nav a');
+    for (var i = 0; i < links.length; i++) links[i].addEventListener('click', function (e) { e.preventDefault(); show(this.getAttribute('data-l')); history.replaceState(null, '', '?lang=' + this.getAttribute('data-l')); });
+  });
+})();
+</script>
+</head>
+<body>
+<main>
+<nav aria-label="Language / Idioma"><a href="?lang=es" data-l="es" hreflang="es" lang="es">Español</a> · <a href="?lang=en" data-l="en" hreflang="en" lang="en">English</a> · <a href="?lang=fr" data-l="fr" hreflang="fr" lang="fr">Français</a> · <a href="?lang=de" data-l="de" hreflang="de" lang="de">Deutsch</a> · <a href="?lang=it" data-l="it" hreflang="it" lang="it">Italiano</a> · <a href="?lang=pt-BR" data-l="pt-BR" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="?lang=nl" data-l="nl" hreflang="nl" lang="nl">Nederlands</a> · <a href="?lang=pl" data-l="pl" hreflang="pl" lang="pl">Polski</a> · <a href="?lang=sv" data-l="sv" hreflang="sv" lang="sv">Svenska</a> · <a href="?lang=da" data-l="da" hreflang="da" lang="da">Dansk</a> · <a href="?lang=nb" data-l="nb" hreflang="nb" lang="nb">Norsk bokmål</a> · <a href="?lang=fi" data-l="fi" hreflang="fi" lang="fi">Suomi</a></nav>
+<div class="card">
+<section id="es" lang="es" class="lang">
+<h1>Política de privacidad de Guau Puzles</h1>
+<p class="upd">Última actualización: 22 de octubre de 2026</p>
+<h2>En resumen</h2>
+<p>Guau Puzles <b>no recoge ningún dato personal</b>. No hay anuncios, ni rastreadores, ni analítica, ni cuentas, ni inicio de sesión. Es un juego de puzles de perritos para jugar en familia.</p>
+<h2>Lo que se queda en tu dispositivo</h2>
+<p>Tu progreso (niveles, estrellas, perritos, ajustes y los nombres que escribas para los jugadores) se guarda <b>solo en tu móvil o navegador</b>. Nosotros no lo vemos ni lo recibimos. Si quieres pasarlo a otro dispositivo, tú mismo copias un código de copia de seguridad.</p>
+<h2>Lo que nunca hacemos</h2>
+<p>No enviamos datos a ningún servidor nuestro (no tenemos ninguno para esto), no compartimos ni vendemos nada, no usamos anuncios ni analítica y no pedimos ubicación, cámara, micrófono, contactos ni archivos.</p>
+<h2>La compra única (app de Android)</h2>
+<p>La app de Android ofrece <b>una sola compra opcional</b> que abre todos los juegos. La gestiona Google Play: nosotros nunca vemos tus datos de pago. La app solo comprueba, en tu móvil, si Google Play indica que la compra está hecha. Para eso rige la política de privacidad de Google. Un niño no puede comprar solo: antes aparece una pregunta para mayores.</p>
+<h2>Niños y familias</h2>
+<p>Guau Puzles está pensado para niños y familias. No pide ningún dato personal a nadie, ni a los niños ni a los mayores.</p>
+<h2>La versión web</h2>
+<p>La web se sirve como cualquier página: el servidor puede guardar los registros técnicos habituales de acceso (por ejemplo, la dirección IP), que no usamos para identificar a nadie. No usamos cookies de seguimiento.</p>
+<h2>Borrar tus datos</h2>
+<p>En Ajustes puedes «Borrar progreso». Si desinstalas la app o borras los datos del navegador, todo desaparece de tu dispositivo.</p>
+<h2>Contacto y cambios</h2>
+<p>Si tienes dudas, escribe al contacto del desarrollador que aparece en la ficha de Guau Puzles en Google Play. Si esta política cambia, se publicará aquí con su fecha.</p>
+<p class="go"><a href="/">Ir al juego</a></p>
+</section>
+<section id="en" lang="en" class="lang">
+<h1>Guau Puzles privacy policy</h1>
+<p class="upd">Last updated: 22 October 2026</p>
+<h2>In short</h2>
+<p>Guau Puzles <b>does not collect any personal data</b>. There are no ads, no trackers, no analytics, no accounts and no sign-in. It is a puppy puzzle game for the whole family.</p>
+<h2>What stays on your device</h2>
+<p>Your progress (levels, stars, puppies, settings and any player names you type) is saved <b>only on your phone or browser</b>. We never see it and never receive it. To move it to another device you copy a backup code yourself.</p>
+<h2>What we never do</h2>
+<p>We don’t send data to any server of ours (we have none for this), we don’t share or sell anything, we use no ads or analytics, and we don’t ask for location, camera, microphone, contacts or files.</p>
+<h2>The one purchase (Android app)</h2>
+<p>The Android app offers <b>one optional purchase</b> that opens all the games. Google Play handles it: we never see your payment details. The app only checks, on your phone, whether Google Play says the purchase has been made. Google’s privacy policy applies to that. A child can’t buy alone: a question for grown-ups always comes first.</p>
+<h2>Children and families</h2>
+<p>Guau Puzles is made for children and families. It asks nobody for personal information, neither children nor adults.</p>
+<h2>The website</h2>
+<p>The website is served like any other page: the server may keep the usual technical access logs (for example, the IP address), which we don’t use to identify anyone. We use no tracking cookies.</p>
+<h2>Deleting your data</h2>
+<p>In Settings you can use “Delete progress”. If you uninstall the app or clear your browser data, everything disappears from your device.</p>
+<h2>Contact and changes</h2>
+<p>If you have questions, write to the developer contact shown on the Guau Puzles page in Google Play. If this policy changes, the new version will be published here with its date.</p>
+<p class="go"><a href="/">Go to the game</a></p>
+</section>
+<section id="fr" lang="fr" class="lang">
+<h1>Politique de confidentialité de Guau Puzles</h1>
+<p class="upd">Dernière mise à jour : 22 octobre 2026</p>
+<h2>En bref</h2>
+<p>Guau Puzles <b>ne collecte aucune donnée personnelle</b>. Il n’y a ni publicité, ni traceurs, ni statistiques, ni compte, ni connexion. C’est un jeu de puzzles de toutous à jouer en famille.</p>
+<h2>Ce qui reste sur ton appareil</h2>
+<p>Ta progression (niveaux, étoiles, toutous, réglages et les noms que tu écris pour les joueurs) est enregistrée <b>uniquement sur ton téléphone ou ton navigateur</b>. Nous ne la voyons pas et ne la recevons pas. Pour la passer sur un autre appareil, tu copies toi-même un code de sauvegarde.</p>
+<h2>Ce que nous ne faisons jamais</h2>
+<p>Nous n’envoyons de données à aucun serveur à nous (nous n’en avons pas pour cela), nous ne partageons ni ne vendons rien, nous n’utilisons ni publicité ni statistiques et nous ne demandons ni position, ni caméra, ni micro, ni contacts, ni fichiers.</p>
+<h2>L’achat unique (appli Android)</h2>
+<p>L’appli Android propose <b>un seul achat facultatif</b> qui ouvre tous les jeux. C’est Google Play qui le gère : nous ne voyons jamais tes données de paiement. L’appli vérifie seulement, sur ton téléphone, si Google Play indique que l’achat a été fait. La politique de confidentialité de Google s’applique alors. Un enfant ne peut pas acheter seul : une question pour les grands vient toujours avant.</p>
+<h2>Enfants et familles</h2>
+<p>Guau Puzles est pensé pour les enfants et les familles. Il ne demande aucune donnée personnelle à personne, ni aux enfants ni aux adultes.</p>
+<h2>Le site web</h2>
+<p>Le site est servi comme n’importe quelle page : le serveur peut conserver les journaux techniques d’accès habituels (par exemple l’adresse IP), que nous n’utilisons pour identifier personne. Nous n’utilisons aucun cookie de suivi.</p>
+<h2>Effacer tes données</h2>
+<p>Dans Réglages, tu peux utiliser « Effacer la progression ». Si tu désinstalles l’appli ou effaces les données du navigateur, tout disparaît de ton appareil.</p>
+<h2>Contact et modifications</h2>
+<p>Pour toute question, écris au contact du développeur indiqué sur la fiche de Guau Puzles sur Google Play. Si cette politique change, la nouvelle version sera publiée ici avec sa date.</p>
+<p class="go"><a href="/">Aller au jeu</a></p>
+</section>
+<section id="de" lang="de" class="lang">
+<h1>Datenschutzerklärung von Guau Puzles</h1>
+<p class="upd">Zuletzt aktualisiert: 22. Oktober 2026</p>
+<h2>Kurz gesagt</h2>
+<p>Guau Puzles <b>erhebt keine personenbezogenen Daten</b>. Es gibt keine Werbung, keine Tracker, keine Analyse, keine Konten und keine Anmeldung. Es ist ein Rätselspiel mit Hündchen für die ganze Familie.</p>
+<h2>Was auf deinem Gerät bleibt</h2>
+<p>Dein Spielstand (Level, Sterne, Hündchen, Einstellungen und die Namen, die du für Spieler eingibst) wird <b>nur auf deinem Handy oder in deinem Browser</b> gespeichert. Wir sehen ihn nicht und bekommen ihn nicht. Um ihn auf ein anderes Gerät zu übertragen, kopierst du selbst einen Sicherungscode.</p>
+<h2>Was wir nie tun</h2>
+<p>Wir senden keine Daten an einen eigenen Server (wir haben dafür keinen), wir geben nichts weiter und verkaufen nichts, wir nutzen keine Werbung und keine Analyse und fragen weder nach Standort, Kamera, Mikrofon, Kontakten noch Dateien.</p>
+<h2>Der Einmalkauf (Android-App)</h2>
+<p>Die Android-App bietet <b>einen einzigen optionalen Kauf</b>, der alle Spiele freischaltet. Ihn wickelt Google Play ab: Wir sehen deine Zahlungsdaten nie. Die App prüft nur auf deinem Handy, ob Google Play den Kauf meldet. Dafür gilt die Datenschutzerklärung von Google. Ein Kind kann nicht allein kaufen: Zuerst kommt immer eine Frage für Erwachsene.</p>
+<h2>Kinder und Familien</h2>
+<p>Guau Puzles ist für Kinder und Familien gemacht. Es fragt niemanden nach persönlichen Daten, weder Kinder noch Erwachsene.</p>
+<h2>Die Webseite</h2>
+<p>Die Webseite wird wie jede andere Seite ausgeliefert: Der Server kann die üblichen technischen Zugriffsprotokolle führen (zum Beispiel die IP-Adresse), die wir nicht nutzen, um jemanden zu identifizieren. Wir verwenden keine Tracking-Cookies.</p>
+<h2>Deine Daten löschen</h2>
+<p>In den Einstellungen kannst du „Fortschritt löschen“ wählen. Wenn du die App deinstallierst oder die Browserdaten löschst, verschwindet alles von deinem Gerät.</p>
+<h2>Kontakt und Änderungen</h2>
+<p>Bei Fragen schreib an den Entwicklerkontakt auf der Guau-Puzles-Seite in Google Play. Wenn sich diese Erklärung ändert, wird die neue Fassung hier mit Datum veröffentlicht.</p>
+<p class="go"><a href="/">Zum Spiel</a></p>
+</section>
+<section id="it" lang="it" class="lang">
+<h1>Informativa sulla privacy di Guau Puzles</h1>
+<p class="upd">Ultimo aggiornamento: 22 ottobre 2026</p>
+<h2>In breve</h2>
+<p>Guau Puzles <b>non raccoglie alcun dato personale</b>. Non ci sono pubblicità, tracker, statistiche, account né accesso. È un gioco di puzzle con cagnolini da giocare in famiglia.</p>
+<h2>Cosa resta sul tuo dispositivo</h2>
+<p>I tuoi progressi (livelli, stelle, cagnolini, impostazioni e i nomi che scrivi per i giocatori) sono salvati <b>solo sul tuo telefono o browser</b>. Noi non li vediamo e non li riceviamo. Per passarli a un altro dispositivo copi tu stesso un codice di backup.</p>
+<h2>Cosa non facciamo mai</h2>
+<p>Non inviamo dati a nessun server nostro (non ne abbiamo uno per questo), non condividiamo né vendiamo nulla, non usiamo pubblicità né statistiche e non chiediamo posizione, fotocamera, microfono, contatti o file.</p>
+<h2>L’acquisto unico (app Android)</h2>
+<p>L’app Android offre <b>un solo acquisto facoltativo</b> che apre tutti i giochi. Lo gestisce Google Play: noi non vediamo mai i tuoi dati di pagamento. L’app controlla soltanto, sul tuo telefono, se Google Play indica che l’acquisto è stato fatto. Vale l’informativa sulla privacy di Google. Un bambino non può comprare da solo: prima c’è sempre una domanda per i grandi.</p>
+<h2>Bambini e famiglie</h2>
+<p>Guau Puzles è pensato per bambini e famiglie. Non chiede dati personali a nessuno, né ai bambini né agli adulti.</p>
+<h2>Il sito web</h2>
+<p>Il sito è servito come qualsiasi pagina: il server può conservare i soliti registri tecnici di accesso (per esempio l’indirizzo IP), che non usiamo per identificare nessuno. Non usiamo cookie di tracciamento.</p>
+<h2>Cancellare i tuoi dati</h2>
+<p>In Impostazioni puoi usare «Cancella progressi». Se disinstalli l’app o cancelli i dati del browser, tutto sparisce dal tuo dispositivo.</p>
+<h2>Contatti e modifiche</h2>
+<p>Per qualsiasi dubbio scrivi al contatto dello sviluppatore indicato nella scheda di Guau Puzles su Google Play. Se questa informativa cambia, la nuova versione sarà pubblicata qui con la data.</p>
+<p class="go"><a href="/">Vai al gioco</a></p>
+</section>
+<section id="pt-BR" lang="pt-BR" class="lang">
+<h1>Política de privacidade do Guau Puzles</h1>
+<p class="upd">Última atualização: 22 de outubro de 2026</p>
+<h2>Em resumo</h2>
+<p>O Guau Puzles <b>não coleta nenhum dado pessoal</b>. Não há anúncios, rastreadores, análises, contas nem login. É um jogo de quebra-cabeças de cachorrinhos para jogar em família.</p>
+<h2>O que fica no seu aparelho</h2>
+<p>Seu progresso (níveis, estrelas, cachorrinhos, configurações e os nomes que você escrever para os jogadores) é salvo <b>somente no seu celular ou navegador</b>. Nós não vemos nem recebemos. Para levar para outro aparelho, você mesmo copia um código de backup.</p>
+<h2>O que nunca fazemos</h2>
+<p>Não enviamos dados para nenhum servidor nosso (não temos nenhum para isso), não compartilhamos nem vendemos nada, não usamos anúncios nem análises e não pedimos localização, câmera, microfone, contatos ou arquivos.</p>
+<h2>A compra única (app Android)</h2>
+<p>O app Android oferece <b>uma única compra opcional</b> que abre todos os jogos. Quem cuida dela é o Google Play: nós nunca vemos seus dados de pagamento. O app apenas verifica, no seu celular, se o Google Play indica que a compra foi feita. Vale a política de privacidade do Google. Uma criança não compra sozinha: antes sempre aparece uma pergunta para adultos.</p>
+<h2>Crianças e famílias</h2>
+<p>O Guau Puzles foi feito para crianças e famílias. Ele não pede dados pessoais a ninguém, nem a crianças nem a adultos.</p>
+<h2>O site</h2>
+<p>O site é entregue como qualquer página: o servidor pode guardar os registros técnicos de acesso habituais (por exemplo, o endereço IP), que não usamos para identificar ninguém. Não usamos cookies de rastreamento.</p>
+<h2>Apagar seus dados</h2>
+<p>Em Configurações você pode usar “Apagar progresso”. Se desinstalar o app ou limpar os dados do navegador, tudo some do seu aparelho.</p>
+<h2>Contato e mudanças</h2>
+<p>Em caso de dúvida, escreva para o contato do desenvolvedor que aparece na página do Guau Puzles no Google Play. Se esta política mudar, a nova versão será publicada aqui com a data.</p>
+<p class="go"><a href="/">Ir para o jogo</a></p>
+</section>
+<section id="nl" lang="nl" class="lang">
+<h1>Privacybeleid van Guau Puzles</h1>
+<p class="upd">Laatst bijgewerkt: 22 oktober 2026</p>
+<h2>Kort gezegd</h2>
+<p>Guau Puzles <b>verzamelt geen persoonsgegevens</b>. Er zijn geen advertenties, geen trackers, geen analyse, geen accounts en geen inloggen. Het is een puzzelspel met hondjes voor het hele gezin.</p>
+<h2>Wat op je apparaat blijft</h2>
+<p>Je voortgang (levels, sterren, hondjes, instellingen en de namen die je voor spelers typt) wordt <b>alleen op je telefoon of in je browser</b> bewaard. Wij zien hem niet en ontvangen hem niet. Wil je hem op een ander apparaat zetten, dan kopieer je zelf een back-upcode.</p>
+<h2>Wat we nooit doen</h2>
+<p>We sturen geen gegevens naar een eigen server (we hebben er hiervoor geen), we delen of verkopen niets, we gebruiken geen advertenties of analyse en vragen niet om locatie, camera, microfoon, contacten of bestanden.</p>
+<h2>De eenmalige aankoop (Android-app)</h2>
+<p>De Android-app biedt <b>één optionele aankoop</b> die alle spellen opent. Google Play handelt die af: wij zien je betaalgegevens nooit. De app controleert alleen op je telefoon of Google Play meldt dat de aankoop is gedaan. Daarvoor geldt het privacybeleid van Google. Een kind kan niet alleen kopen: eerst komt altijd een vraag voor volwassenen.</p>
+<h2>Kinderen en gezinnen</h2>
+<p>Guau Puzles is gemaakt voor kinderen en gezinnen. Het vraagt niemand om persoonlijke gegevens, kinderen noch volwassenen.</p>
+<h2>De website</h2>
+<p>De website wordt geleverd zoals elke pagina: de server kan de gebruikelijke technische toegangslogs bewaren (bijvoorbeeld het IP-adres), die wij niet gebruiken om iemand te identificeren. We gebruiken geen trackingcookies.</p>
+<h2>Je gegevens wissen</h2>
+<p>In Instellingen kun je “Voortgang wissen” kiezen. Als je de app verwijdert of de browsergegevens wist, verdwijnt alles van je apparaat.</p>
+<h2>Contact en wijzigingen</h2>
+<p>Heb je vragen, schrijf dan naar het ontwikkelaarscontact op de Guau Puzles-pagina in Google Play. Als dit beleid verandert, wordt de nieuwe versie hier met datum gepubliceerd.</p>
+<p class="go"><a href="/">Naar het spel</a></p>
+</section>
+<section id="pl" lang="pl" class="lang">
+<h1>Polityka prywatności Guau Puzles</h1>
+<p class="upd">Ostatnia aktualizacja: 22 października 2026</p>
+<h2>W skrócie</h2>
+<p>Guau Puzles <b>nie zbiera żadnych danych osobowych</b>. Nie ma reklam, narzędzi śledzących, analityki, kont ani logowania. To gra logiczna z pieskami dla całej rodziny.</p>
+<h2>Co zostaje na twoim urządzeniu</h2>
+<p>Twoje postępy (poziomy, gwiazdki, pieski, ustawienia i imiona graczy, które wpiszesz) są zapisywane <b>tylko w twoim telefonie lub przeglądarce</b>. My ich nie widzimy ani nie otrzymujemy. Żeby przenieść je na inne urządzenie, sam kopiujesz kod kopii zapasowej.</p>
+<h2>Czego nigdy nie robimy</h2>
+<p>Nie wysyłamy danych na żaden własny serwer (nie mamy takiego do tego celu), niczego nie udostępniamy ani nie sprzedajemy, nie używamy reklam ani analityki i nie prosimy o lokalizację, aparat, mikrofon, kontakty ani pliki.</p>
+<h2>Jednorazowy zakup (aplikacja na Androida)</h2>
+<p>Aplikacja na Androida oferuje <b>jeden opcjonalny zakup</b>, który otwiera wszystkie gry. Obsługuje go Google Play: nigdy nie widzimy twoich danych płatniczych. Aplikacja tylko sprawdza w twoim telefonie, czy Google Play podaje, że zakup został dokonany. Obowiązuje wtedy polityka prywatności Google. Dziecko nie kupi samo: najpierw zawsze pojawia się pytanie dla dorosłych.</p>
+<h2>Dzieci i rodziny</h2>
+<p>Guau Puzles jest stworzone dla dzieci i rodzin. Nikogo nie prosi o dane osobowe, ani dzieci, ani dorosłych.</p>
+<h2>Strona internetowa</h2>
+<p>Strona jest udostępniana jak każda inna: serwer może zapisywać zwykłe techniczne dzienniki dostępu (na przykład adres IP), których nie używamy do identyfikowania nikogo. Nie używamy plików cookie do śledzenia.</p>
+<h2>Usuwanie danych</h2>
+<p>W Ustawieniach możesz wybrać „Usuń postępy”. Jeśli odinstalujesz aplikację lub wyczyścisz dane przeglądarki, wszystko zniknie z urządzenia.</p>
+<h2>Kontakt i zmiany</h2>
+<p>W razie pytań napisz do kontaktu dewelopera podanego na stronie Guau Puzles w Google Play. Jeśli ta polityka się zmieni, nowa wersja zostanie tu opublikowana z datą.</p>
+<p class="go"><a href="/">Przejdź do gry</a></p>
+</section>
+<section id="sv" lang="sv" class="lang">
+<h1>Integritetspolicy för Guau Puzles</h1>
+<p class="upd">Senast uppdaterad: 22 oktober 2026</p>
+<h2>Kort sagt</h2>
+<p>Guau Puzles <b>samlar inte in några personuppgifter</b>. Det finns inga annonser, inga spårare, ingen analys, inga konton och ingen inloggning. Det är ett pusselspel med hundar för hela familjen.</p>
+<h2>Vad som stannar på din enhet</h2>
+<p>Dina framsteg (nivåer, stjärnor, hundar, inställningar och de namn du skriver för spelarna) sparas <b>bara på din mobil eller i din webbläsare</b>. Vi ser dem inte och tar inte emot dem. Vill du flytta dem till en annan enhet kopierar du själv en säkerhetskod.</p>
+<h2>Vad vi aldrig gör</h2>
+<p>Vi skickar inga uppgifter till någon egen server (vi har ingen för detta), vi delar eller säljer ingenting, vi använder varken annonser eller analys och vi ber inte om plats, kamera, mikrofon, kontakter eller filer.</p>
+<h2>Engångsköpet (Android-appen)</h2>
+<p>Android-appen erbjuder <b>ett enda valfritt köp</b> som öppnar alla spel. Google Play sköter det: vi ser aldrig dina betalningsuppgifter. Appen kontrollerar bara på din mobil om Google Play visar att köpet är gjort. Då gäller Googles integritetspolicy. Ett barn kan inte köpa själv: först kommer alltid en fråga för vuxna.</p>
+<h2>Barn och familjer</h2>
+<p>Guau Puzles är gjort för barn och familjer. Det ber ingen om personuppgifter, varken barn eller vuxna.</p>
+<h2>Webbplatsen</h2>
+<p>Webbplatsen levereras som vilken sida som helst: servern kan spara vanliga tekniska åtkomstloggar (till exempel IP-adressen), som vi inte använder för att identifiera någon. Vi använder inga spårningskakor.</p>
+<h2>Radera dina uppgifter</h2>
+<p>I Inställningar kan du välja ”Radera framsteg”. Om du avinstallerar appen eller rensar webbläsarens data försvinner allt från din enhet.</p>
+<h2>Kontakt och ändringar</h2>
+<p>Har du frågor, skriv till utvecklarkontakten på Guau Puzles-sidan i Google Play. Om policyn ändras publiceras den nya versionen här med datum.</p>
+<p class="go"><a href="/">Gå till spelet</a></p>
+</section>
+<section id="da" lang="da" class="lang">
+<h1>Privatlivspolitik for Guau Puzles</h1>
+<p class="upd">Senest opdateret: 22. oktober 2026</p>
+<h2>Kort sagt</h2>
+<p>Guau Puzles <b>indsamler ingen personlige oplysninger</b>. Der er ingen reklamer, ingen sporing, ingen analyse, ingen konti og ingen login. Det er et puslespil med hunde til hele familien.</p>
+<h2>Hvad der bliver på din enhed</h2>
+<p>Dine fremskridt (niveauer, stjerner, hunde, indstillinger og de navne, du skriver til spillerne) gemmes <b>kun på din telefon eller i din browser</b>. Vi ser dem ikke og modtager dem ikke. Vil du flytte dem til en anden enhed, kopierer du selv en sikkerhedskode.</p>
+<h2>Hvad vi aldrig gør</h2>
+<p>Vi sender ikke data til nogen server, der er vores (vi har ingen til dette), vi deler eller sælger ikke noget, vi bruger hverken reklamer eller analyse, og vi beder ikke om placering, kamera, mikrofon, kontakter eller filer.</p>
+<h2>Det enkelte køb (Android-appen)</h2>
+<p>Android-appen tilbyder <b>ét valgfrit køb</b>, der åbner alle spil. Google Play håndterer det: vi ser aldrig dine betalingsoplysninger. Appen tjekker kun på din telefon, om Google Play viser, at købet er gennemført. Her gælder Googles privatlivspolitik. Et barn kan ikke købe alene: Der kommer altid et spørgsmål til voksne først.</p>
+<h2>Børn og familier</h2>
+<p>Guau Puzles er lavet til børn og familier. Det beder ingen om personlige oplysninger, hverken børn eller voksne.</p>
+<h2>Hjemmesiden</h2>
+<p>Hjemmesiden leveres som enhver anden side: Serveren kan gemme de sædvanlige tekniske adgangslogs (for eksempel IP-adressen), som vi ikke bruger til at identificere nogen. Vi bruger ingen sporingscookies.</p>
+<h2>Slet dine data</h2>
+<p>I Indstillinger kan du vælge “Slet fremskridt”. Hvis du afinstallerer appen eller rydder browserens data, forsvinder alt fra din enhed.</p>
+<h2>Kontakt og ændringer</h2>
+<p>Har du spørgsmål, så skriv til udviklerens kontakt på Guau Puzles-siden i Google Play. Hvis politikken ændres, bliver den nye version udgivet her med dato.</p>
+<p class="go"><a href="/">Gå til spillet</a></p>
+</section>
+<section id="nb" lang="nb" class="lang">
+<h1>Personvernerklæring for Guau Puzles</h1>
+<p class="upd">Sist oppdatert: 22. oktober 2026</p>
+<h2>Kort sagt</h2>
+<p>Guau Puzles <b>samler ikke inn noen personopplysninger</b>. Det finnes ingen reklame, ingen sporing, ingen analyse, ingen kontoer og ingen innlogging. Det er et puslespill med hunder for hele familien.</p>
+<h2>Hva som blir på enheten din</h2>
+<p>Fremgangen din (nivåer, stjerner, hunder, innstillinger og navnene du skriver inn for spillerne) lagres <b>bare på mobilen eller i nettleseren din</b>. Vi ser den ikke og mottar den ikke. Vil du flytte den til en annen enhet, kopierer du selv en sikkerhetskode.</p>
+<h2>Hva vi aldri gjør</h2>
+<p>Vi sender ikke data til noen egen server (vi har ingen til dette), vi deler eller selger ingenting, vi bruker verken reklame eller analyse, og vi ber ikke om posisjon, kamera, mikrofon, kontakter eller filer.</p>
+<h2>Engangskjøpet (Android-appen)</h2>
+<p>Android-appen tilbyr <b>ett valgfritt kjøp</b> som åpner alle spillene. Google Play håndterer det: Vi ser aldri betalingsopplysningene dine. Appen sjekker bare på mobilen din om Google Play viser at kjøpet er gjort. Da gjelder Googles personvernerklæring. Et barn kan ikke kjøpe alene: Det kommer alltid et spørsmål til voksne først.</p>
+<h2>Barn og familier</h2>
+<p>Guau Puzles er laget for barn og familier. Det ber ingen om personopplysninger, verken barn eller voksne.</p>
+<h2>Nettsiden</h2>
+<p>Nettsiden leveres som alle andre sider: Tjeneren kan lagre vanlige tekniske tilgangslogger (for eksempel IP-adressen), som vi ikke bruker til å identifisere noen. Vi bruker ingen sporingsinformasjonskapsler.</p>
+<h2>Slette dataene dine</h2>
+<p>I Innstillinger kan du velge «Slett fremgang». Avinstallerer du appen eller sletter nettleserdataene, forsvinner alt fra enheten din.</p>
+<h2>Kontakt og endringer</h2>
+<p>Har du spørsmål, skriv til utviklerkontakten på Guau Puzles-siden i Google Play. Hvis erklæringen endres, publiseres den nye versjonen her med dato.</p>
+<p class="go"><a href="/">Gå til spillet</a></p>
+</section>
+<section id="fi" lang="fi" class="lang">
+<h1>Guau Puzlesin tietosuojakäytäntö</h1>
+<p class="upd">Päivitetty viimeksi: 22. lokakuuta 2026</p>
+<h2>Lyhyesti</h2>
+<p>Guau Puzles <b>ei kerää mitään henkilötietoja</b>. Siinä ei ole mainoksia, seurantaa, analytiikkaa, tilejä eikä kirjautumista. Se on koirapulmapeli koko perheelle.</p>
+<h2>Mitä jää laitteellesi</h2>
+<p>Edistymisesi (tasot, tähdet, koirat, asetukset ja pelaajille kirjoittamasi nimet) tallentuu <b>vain puhelimeesi tai selaimeesi</b>. Emme näe sitä emmekä saa sitä. Jos haluat siirtää sen toiselle laitteelle, kopioit itse varmuuskopiokoodin.</p>
+<h2>Mitä emme koskaan tee</h2>
+<p>Emme lähetä tietoja millekään omalle palvelimellemme (meillä ei ole sellaista tähän), emme jaa emmekä myy mitään, emme käytä mainoksia emmekä analytiikkaa, emmekä pyydä sijaintia, kameraa, mikrofonia, yhteystietoja tai tiedostoja.</p>
+<h2>Kertaostos (Android-sovellus)</h2>
+<p>Android-sovelluksessa on <b>yksi valinnainen ostos</b>, joka avaa kaikki pelit. Sen hoitaa Google Play: emme koskaan näe maksutietojasi. Sovellus vain tarkistaa puhelimessasi, ilmoittaako Google Play ostoksen tehdyksi. Silloin pätee Googlen tietosuojakäytäntö. Lapsi ei voi ostaa yksin: ensin tulee aina kysymys aikuisille.</p>
+<h2>Lapset ja perheet</h2>
+<p>Guau Puzles on tehty lapsille ja perheille. Se ei pyydä keneltäkään henkilötietoja, ei lapsilta eikä aikuisilta.</p>
+<h2>Verkkosivusto</h2>
+<p>Verkkosivusto tarjoillaan kuten mikä tahansa sivu: palvelin voi säilyttää tavalliset tekniset käyttölokit (esimerkiksi IP-osoitteen), joita emme käytä kenenkään tunnistamiseen. Emme käytä seurantaevästeitä.</p>
+<h2>Tietojesi poistaminen</h2>
+<p>Asetuksissa voit valita ”Poista edistyminen”. Jos poistat sovelluksen tai selaimen tiedot, kaikki katoaa laitteeltasi.</p>
+<h2>Yhteys ja muutokset</h2>
+<p>Jos sinulla on kysyttävää, kirjoita kehittäjän yhteystietoon, joka näkyy Guau Puzlesin sivulla Google Playssa. Jos käytäntö muuttuu, uusi versio julkaistaan tässä päivämäärineen.</p>
+<p class="go"><a href="/">Siirry peliin</a></p>
+</section>
+</div>
+</main>
+</body>
+</html>
